@@ -6,5 +6,6 @@ public interface Cadastro <T> {
     public void listarPeloId(Hospital hospital, Integer id);
     public void alterarPeloId(Hospital hospital, Integer id, T entidade);
     public void deletarPeloId(Hospital hospital, Integer id);
-    public void setarAtributos(Atendimento atendimento, Atendimento atendimentoAtualizado);
+    public void setarAtributos(T entidade, T entidadeAtualizada);
+
 }

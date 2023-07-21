@@ -25,4 +25,14 @@ public class Funcionario extends Pessoa{
     public void setSalarioMensal(Double salarioMensal) {
         this.salarioMensal = salarioMensal;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: ").append(this.getId());
+        sb.append("\nFuncionário: ").append(this.getNome());
+        sb.append("\nCPF: ").append(this.getCpf());
+        sb.append("\nSalário Mensal: R$").append(String.format("%.2f", this.getSalarioMensal()));
+        return sb.toString();
+    }
 }
