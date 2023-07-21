@@ -1,9 +1,6 @@
 package model;
 
-import java.lang.reflect.Parameter;
-import java.util.ArrayList;
-
-public class Medico extends Pessoa implements Agendamento{
+public class Medico extends Pessoa{
     private String crm;
     private Double salarioMensal;
 
@@ -13,6 +10,7 @@ public class Medico extends Pessoa implements Agendamento{
         this.salarioMensal = salarioMensal;
     }
 
+    // Getters & Setters
     public String getCrm() {
         return crm;
     }
@@ -29,18 +27,7 @@ public class Medico extends Pessoa implements Agendamento{
         this.salarioMensal = salarioMensal;
     }
 
-    @Override
-    public Boolean agendarAtendimento() {
-        return false;
-    }
-
-    @Override
-    public Boolean consultarAtendimentos() {
-        return false;
-    }
-
-    @Override
-    public Boolean consultarAtendimentos(Paciente paciente) {
-        return false;
+    public void setSalarioMensal(Double salarioMensal) {
+        this.salarioMensal = salarioMensal;
     }
 }

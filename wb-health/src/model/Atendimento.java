@@ -1,22 +1,38 @@
 package model;
 
+import util.TipoDeAtendimento;
+
 public class Atendimento {
     private Integer id;
     private Paciente paciente;
     private Medico medico;
     private String data;
     private String laudo;
-    private Boolean ehPlano;
+    private TipoDeAtendimento tipoDeAtendimento;
+    private Double valor;
 
-    public Atendimento(Integer id, Paciente paciente, Medico medico, String data, String laudo, Boolean ehPlano) {
+    public Atendimento(Integer id, Paciente paciente, Medico medico, String data, String laudo, TipoDeAtendimento tipoDeAtendimento) {
         this.id = id;
         this.paciente = paciente;
         this.medico = medico;
         this.data = data;
         this.laudo = laudo;
-        this.ehPlano = ehPlano;
+        this.tipoDeAtendimento = tipoDeAtendimento;
+        this.valor = calcularValorDoAtendimento(this.tipoDeAtendimento);
     }
 
+    public Double calcularValorDoAtendimento(TipoDeAtendimento tipoDeAtendimento) {
+        return switch (tipoDeAtendimento) {
+            case CIRURGIA -> 5000.0;
+            case EXAME -> 300.0;
+            case CONSULTA -> 180.0;
+            case RETORNO -> 100.0;
+            case TRIAGEM -> 10.0;
+            default -> 0.0;
+        };
+    }
+
+    // Getters & Setters
     public Integer getId() {
         return id;
     }
@@ -57,12 +73,20 @@ public class Atendimento {
         this.laudo = laudo;
     }
 
-    public Boolean getEhPlano() {
-        return ehPlano;
+    public TipoDeAtendimento getTipoDeAtendimento() {
+        return tipoDeAtendimento;
     }
 
-    public void setEhPlano(Boolean ehPlano) {
-        this.ehPlano = ehPlano;
+    public void setTipoDeAtendimento(TipoDeAtendimento tipoDeAtendimento) {
+        this.tipoDeAtendimento = tipoDeAtendimento;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
 

@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Hospital implements Cadastro, Agendamento {
+public class Hospital {
     private String cnpj;
     private String nome;
     private Integer numeroLeitos;
@@ -11,7 +11,17 @@ public class Hospital implements Cadastro, Agendamento {
     private ArrayList<Paciente> pacientes;
     private ArrayList<Atendimento> atendimentos;
 
-    public Hospital(String cnpj, String nome, Integer numeroLeitos, Integer leitosOcupados, ArrayList<Medico> medicos, ArrayList<Paciente> pacientes, ArrayList<Atendimento> atendimentos) {
+    private ArrayList<Funcionario> funcionarios;
+
+    public Hospital(String cnpj,
+                    String nome,
+                    Integer numeroLeitos,
+                    Integer leitosOcupados,
+                    ArrayList<Medico> medicos,
+                    ArrayList<Paciente> pacientes,
+                    ArrayList<Atendimento> atendimentos,
+                    ArrayList<Funcionario> funcionarios) {
+
         this.cnpj = cnpj;
         this.nome = nome;
         this.numeroLeitos = numeroLeitos;
@@ -21,6 +31,7 @@ public class Hospital implements Cadastro, Agendamento {
         this.atendimentos = atendimentos;
     }
 
+    // Getters & Setters
     public String getCnpj() {
         return cnpj;
     }
@@ -77,49 +88,11 @@ public class Hospital implements Cadastro, Agendamento {
         this.atendimentos = atendimentos;
     }
 
-
-    @Override
-    public void cadastrarPaciente(Paciente paciente) {
-
+    public ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
 
-    @Override
-    public void cadastrarMedico(Medico medico) {
-
-    }
-
-    @Override
-    public void alterarCadastro(Paciente paciente) {
-
-    }
-
-    @Override
-    public void alterarCadastro(Medico medico) {
-
-    }
-
-    @Override
-    public Paciente consultarCadastro(Paciente paciente) {
-        return null;
-    }
-
-    @Override
-    public Medico consultarCadastro(Medico medico) {
-        return null;
-    }
-
-    @Override
-    public Boolean agendarAtendimento() {
-        return false;
-    }
-
-    @Override
-    public Boolean consultarAtendimentos() {
-        return false;
-    }
-
-    @Override
-    public Boolean consultarAtendimentos(Paciente paciente) {
-        return false;
+    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 }
