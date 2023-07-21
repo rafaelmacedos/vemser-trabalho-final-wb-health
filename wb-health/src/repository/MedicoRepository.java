@@ -1,7 +1,6 @@
 package repository;
 
 import model.Cadastro;
-import model.Funcionario;
 import model.Hospital;
 import model.Medico;
 
@@ -21,7 +20,9 @@ public class MedicoRepository implements Cadastro<Medico> {
     @Override
     public void listarPeloId(Hospital hospital, Integer id) {
         for (Medico medico : hospital.getMedicos()) {
-            System.out.println(medico);
+            if (medico.getId().equals(id)) {
+                System.out.println(medico);
+            }
         }
 
     }
