@@ -89,5 +89,18 @@ public class Atendimento {
         this.valor = valor;
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: ").append(this.id);
+        sb.append("\nPaciente: ").append(this.paciente);
+        sb.append("\nMédico: ").append(this.medico);
+        sb.append("\nData: ").append(this.data);
+        sb.append("\nLaudo: ").append(this.laudo);
+        String strAtendimento = this.tipoDeAtendimento.toString();
+        strAtendimento = strAtendimento.substring(0 , 1).toUpperCase() + strAtendimento.substring(1);
+        sb.append("\nTipo de Atendimento: ").append(strAtendimento);
+        sb.append("\nValor: R$").append(String.format("%.2f", this.valor));
+        return sb.toString();
+    }
 }
