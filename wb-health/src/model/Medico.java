@@ -30,4 +30,14 @@ public class Medico extends Pessoa{
     public void setSalarioMensal(Double salarioMensal) {
         this.salarioMensal = salarioMensal;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: ").append(this.getId());
+        sb.append("\nMédico: ").append(this.getNome());
+        sb.append("\nCRM: ").append(this.getCrm());
+        sb.append("\nSalário Mensal: R$").append(String.format("%.2f", this.getSalarioMensal()));
+        return sb.toString();
+    }
 }
