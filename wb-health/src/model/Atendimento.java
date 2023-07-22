@@ -3,6 +3,7 @@ package model;
 import util.TipoDeAtendimento;
 
 public class Atendimento {
+    private static Integer contadorId = 0;
     private Integer id;
     private Paciente paciente;
     private Medico medico;
@@ -11,8 +12,8 @@ public class Atendimento {
     private TipoDeAtendimento tipoDeAtendimento;
     private Double valor;
 
-    public Atendimento(Integer id, Paciente paciente, Medico medico, String data, String laudo, TipoDeAtendimento tipoDeAtendimento) {
-        this.id = id;
+    public Atendimento(Paciente paciente, Medico medico, String data, String laudo, TipoDeAtendimento tipoDeAtendimento) {
+        this.id = ++contadorId;;
         this.paciente = paciente;
         this.medico = medico;
         this.data = data;

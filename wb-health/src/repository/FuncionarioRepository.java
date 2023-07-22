@@ -4,6 +4,8 @@ import model.Cadastro;
 import model.Funcionario;
 import model.Hospital;
 
+import java.util.List;
+
 public class FuncionarioRepository implements Cadastro<Funcionario> {
     @Override
     public void cadastrar(Hospital hospital, Funcionario funcionario) {
@@ -44,6 +46,11 @@ public class FuncionarioRepository implements Cadastro<Funcionario> {
         funcionario.setSalarioMensal(funcionarioAtualizado.getSalarioMensal());
         funcionario.setCep(funcionarioAtualizado.getCep());
         funcionario.setNome(funcionario.getNome());
+    }
+
+    @Override
+    public Funcionario buscarId(List<Funcionario> endidade, Integer id) {
+        return null;
     }
 
 }

@@ -4,6 +4,8 @@ import model.Cadastro;
 import model.Hospital;
 import model.Paciente;
 
+import java.util.List;
+
 public class PacienteRepository implements Cadastro<Paciente> {
 
     @Override
@@ -44,5 +46,10 @@ public class PacienteRepository implements Cadastro<Paciente> {
         paciente.setCpf(pacienteAtualizado.getCpf());
         paciente.setCep(pacienteAtualizado.getCep());
         paciente.setNome(pacienteAtualizado.getNome());
+    }
+
+    @Override
+    public Paciente buscarId(List<Paciente> endidade, Integer id) {
+        return null;
     }
 }

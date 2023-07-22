@@ -3,6 +3,9 @@ package repository;
 import model.Atendimento;
 import model.Cadastro;
 import model.Hospital;
+import model.exceptions.IdException;
+
+import java.util.List;
 
 public class AtendimentoRepository implements Cadastro<Atendimento> {
     @Override
@@ -17,20 +20,21 @@ public class AtendimentoRepository implements Cadastro<Atendimento> {
 
     @Override
     public void listarPeloId(Hospital hospital, Integer id) {
-        for (Atendimento atendimento : hospital.getAtendimentos()) {
-            if (atendimento.getId().equals(id)) {
-                System.out.println(atendimento);
-            }
+        Atendimento atendimento = buscarId(hospital.getAtendimentos(), id);
+        if (atendimento == null){
+            throw new IdException("Id não encontrado!");
         }
+        System.out.println(atendimento);
+
     }
 
     @Override
     public void alterarPeloId(Hospital hospital, Integer id, Atendimento atendimentoAtualizado) {
-        for (Atendimento atendimento : hospital.getAtendimentos()) {
-            if (atendimento.getId().equals(id)) {
-                this.setarAtributos(atendimento, atendimentoAtualizado);
-            }
+        Atendimento atendimento = this.buscarId(hospital.getAtendimentos(), id);
+        if (atendimento == null){
+            throw new IdException("Id não encontrado!");
         }
+        this.setarAtributos(atendimento, atendimentoAtualizado);
     }
 
     @Override
@@ -46,6 +50,16 @@ public class AtendimentoRepository implements Cadastro<Atendimento> {
         atendimento.setMedico(atendimentoAtualizado.getMedico());
         atendimento.setPaciente(atendimentoAtualizado.getPaciente());
         atendimento.calcularValorDoAtendimento(atendimentoAtualizado.getTipoDeAtendimento());
+    }
+
+    @Override
+    public Atendimento buscarId(List<Atendimento> atendimentos, Integer id) {
+        for (Atendimento atendimento : atendimentos) {
+            if (atendimento.getId().equals(id)) {
+                return atendimento;
+            }
+        }
+        return null;
     }
 
 }

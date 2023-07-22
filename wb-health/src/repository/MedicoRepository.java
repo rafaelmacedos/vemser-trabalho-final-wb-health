@@ -1,8 +1,12 @@
 package repository;
 
+import model.Atendimento;
 import model.Cadastro;
 import model.Hospital;
 import model.Medico;
+import model.exceptions.IdException;
+
+import java.util.List;
 
 public class MedicoRepository implements Cadastro<Medico> {
 
@@ -19,26 +23,29 @@ public class MedicoRepository implements Cadastro<Medico> {
 
     @Override
     public void listarPeloId(Hospital hospital, Integer id) {
-        for (Medico medico : hospital.getMedicos()) {
-            if (medico.getId().equals(id)) {
-                System.out.println(medico);
-            }
+        Medico medico = buscarId(hospital.getMedicos(), id);
+        if (medico == null){
+            throw new IdException("Id não encontrado!");
         }
-
+        System.out.println(medico);
     }
 
     @Override
     public void alterarPeloId(Hospital hospital, Integer id, Medico medicoAtualizado) {
-        for (Medico medico : hospital.getMedicos()) {
-            if (medico.getId().equals(id)) {
-                this.setarAtributos(medico, medicoAtualizado);
-            }
+        Medico medico = buscarId(hospital.getMedicos(), id);
+        if (medico == null){
+            throw new IdException("Id não encontrado!");
         }
+        this.setarAtributos(medico, medicoAtualizado);
+
     }
 
     @Override
     public void deletarPeloId(Hospital hospital, Integer id) {
-        hospital.getMedicos().removeIf(medico -> medico.getId().equals(id));
+        boolean removeu =  hospital.getMedicos().removeIf(medico -> medico.getId().equals(id));
+        if (!removeu){
+            System.out.println("Não encontramos este id para remover!");
+        }
     }
 
     @Override
@@ -50,5 +57,13 @@ public class MedicoRepository implements Cadastro<Medico> {
 
     }
 
-
+    @Override
+    public Medico buscarId(List<Medico> medicos, Integer id) {
+        for (Medico medico : medicos) {
+            if (medico.getId().equals(id)) {
+                return medico;
+            }
+        }
+        return null;
+    }
 }
