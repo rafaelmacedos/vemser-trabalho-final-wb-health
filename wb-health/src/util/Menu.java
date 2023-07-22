@@ -19,14 +19,17 @@ public class Menu {
         System.out.println("0 - Sair");
     }
 
-    public static void listarSecao(int opcao){
+    public static void listarSecao(Hospital hospital, int opcao){
         String secao = switch (opcao) {
             case 1 -> "médicos";
             case 2 -> "pacientes";
             case 3 -> "funcionários";
             case 4 -> "atendimentos";
+            case 5 -> "atendimentos";
             default -> throw new IllegalStateException("Valor inexperado: " + opcao);
         };
+
+        if (opcao != 5) {
         System.out.println("\n---------- SEÇÃO DE " + secao.toUpperCase() + " ----------");
         System.out.println("1 - Listar - " + secao);
         System.out.println("2 - Inserir - " + secao);
@@ -34,6 +37,11 @@ public class Menu {
         System.out.println("4 - Editar por Id - " + secao);
         System.out.println("5 - Deletar por Id - " +secao );
         System.out.println("0 - Voltar");
+        }
+
+        else if (opcao == 5) {
+            MenuFinanceiro.listar(hospital);
+        }
     }
 
 }

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class Hospital {
     private String cnpj;
     private String nome;
-    private Integer numeroLeitos;
-    private Integer leitosOcupados;
     private ArrayList<Medico> medicos;
     private ArrayList<Paciente> pacientes;
     private ArrayList<Atendimento> atendimentos;
@@ -15,8 +13,6 @@ public class Hospital {
 
     public Hospital(String cnpj,
                     String nome,
-                    Integer numeroLeitos,
-                    Integer leitosOcupados,
                     ArrayList<Medico> medicos,
                     ArrayList<Paciente> pacientes,
                     ArrayList<Atendimento> atendimentos,
@@ -24,8 +20,6 @@ public class Hospital {
 
         this.cnpj = cnpj;
         this.nome = nome;
-        this.numeroLeitos = numeroLeitos;
-        this.leitosOcupados = leitosOcupados;
         this.medicos = medicos;
         this.pacientes = pacientes;
         this.atendimentos = atendimentos;
@@ -47,22 +41,6 @@ public class Hospital {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Integer getNumeroLeitos() {
-        return numeroLeitos;
-    }
-
-    public void setNumeroLeitos(Integer numeroLeitos) {
-        this.numeroLeitos = numeroLeitos;
-    }
-
-    public Integer getLeitosOcupados() {
-        return leitosOcupados;
-    }
-
-    public void setLeitosOcupados(Integer leitosOcupados) {
-        this.leitosOcupados = leitosOcupados;
     }
 
     public ArrayList<Medico> getMedicos() {

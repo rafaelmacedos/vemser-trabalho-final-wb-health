@@ -1,6 +1,6 @@
 package model;
 
-public class Medico extends Pessoa{
+public class Medico extends Pessoa implements Pagamento{
     private String crm;
     private Double salarioMensal;
 
@@ -39,5 +39,16 @@ public class Medico extends Pessoa{
         sb.append("\nCRM: ").append(this.getCrm());
         sb.append("\nSalário Mensal: R$").append(String.format("%.2f", this.getSalarioMensal()));
         return sb.toString();
+    }
+
+    @Override
+    public Double calcularSalarioMensal() {
+        Double taxaInss = 0.14;
+        return getSalarioMensal() - getSalarioMensal() * taxaInss;
+    }
+
+    @Override
+    public Double calcularSalarioAnual() {
+        return calcularSalarioMensal() * 12;
     }
 }

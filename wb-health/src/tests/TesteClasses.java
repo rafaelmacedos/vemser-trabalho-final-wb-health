@@ -37,11 +37,9 @@ public class TesteClasses {
 
         System.out.println();
 
-        Hospital hospital = new Hospital("cnpj", "WB Health", 15, 2, medicos, pacientes, atendimentos, funcionarios);
+        Hospital hospital = new Hospital("cnpj", "WB Health", medicos, pacientes, atendimentos, funcionarios);
         Scanner sc = new Scanner(System.in);
-
-
-
+        
         while (true) {
             try {
                 Integer opcao = -1;
@@ -54,7 +52,7 @@ public class TesteClasses {
                 }
                 while (true) {
                     int selecao = -1;
-                    Menu.listarSecao(opcao);
+                    Menu.listarSecao(hospital, opcao);
                     selecao = Integer.parseInt(sc.nextLine());
                     if (selecao == 0) {
 
@@ -106,6 +104,13 @@ public class TesteClasses {
                                 System.out.println("Selecione uma das opções!!");
                             }
                         }
+                    }
+                    else if (opcao == 5) {
+                       switch (selecao) {
+                           default -> {
+                               System.out.println("Selecione uma das opções!!");
+                           }
+                       }
                     }
                 }
             } catch (NumberFormatException e) {
