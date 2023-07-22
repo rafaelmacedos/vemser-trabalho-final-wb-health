@@ -94,8 +94,8 @@ public class Atendimento {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Id: ").append(this.id);
-        sb.append("\nPaciente: ").append(this.paciente);
-        sb.append("\nMédico: ").append(this.medico);
+        sb.append("\nPaciente: ").append(this.paciente.getNome());
+        sb.append("\nMédico: ").append(this.medico.getNome());
         sb.append("\nData: ").append(this.data);
         sb.append("\nLaudo: ").append(this.laudo);
         String strAtendimento = this.tipoDeAtendimento.toString();

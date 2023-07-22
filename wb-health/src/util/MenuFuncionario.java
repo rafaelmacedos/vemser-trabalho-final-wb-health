@@ -43,7 +43,7 @@ public class MenuFuncionario {
     public static void listarPeloID(Hospital hospital, Scanner sc) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
-            System.out.print("ID do paciente que deseja buscar: ");
+            System.out.print("ID do funcionario que deseja buscar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             funcionarioResource.listarPeloId(hospital, id);
         }catch (InputMismatchException e){
@@ -54,7 +54,7 @@ public class MenuFuncionario {
     public static void alterarPeloId(Hospital hospital, Scanner sc){
         try {
             System.out.println("\n---------- Entre com os dados ----------");
-            System.out.print("ID do paciente que deseja alterar: ");
+            System.out.print("ID do funcionario que deseja alterar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             System.out.print("Novo nome do funcionário: ");
             String nome = sc.nextLine();
@@ -65,7 +65,8 @@ public class MenuFuncionario {
             System.out.print("Entre com o salário mensal: ");
             double salario = Double.parseDouble(sc.nextLine());
 
-            funcionarioResource.alterarPeloId(hospital, id, new Funcionario(nome, cep, cpf, salario));
+            Funcionario funcionario = new Funcionario(nome, cep, cpf, salario);
+            funcionarioResource.alterarPeloId(hospital, id, funcionario);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
         }

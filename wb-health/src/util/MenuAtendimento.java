@@ -78,7 +78,7 @@ public class MenuAtendimento {
     public static void listarPeloID(Hospital hospital, Scanner sc) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
-            System.out.print("ID do paciente que deseja buscar: ");
+            System.out.print("ID do atendimento que deseja buscar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             atendimentoResource.listarPeloId(hospital, id);
         }catch (InputMismatchException e){

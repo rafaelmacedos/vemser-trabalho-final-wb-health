@@ -4,6 +4,7 @@ import model.Cadastro;
 import model.Hospital;
 import model.Medico;
 import model.Paciente;
+import model.exceptions.IdException;
 
 import java.util.List;
 
@@ -21,25 +22,28 @@ public class PacienteRepository implements Cadastro<Paciente> {
 
     @Override
     public void listarPeloId(Hospital hospital, Integer id) {
-        for (Paciente paciente : hospital.getPacientes()) {
-            if (paciente.getId().equals(id)) {
-                System.out.println(paciente);
-            }
+        Paciente paciente = buscarId(hospital.getPacientes(), id);
+        if (paciente == null){
+            throw new IdException("Id não encontrado!");
         }
+        System.out.println(paciente);
     }
 
     @Override
     public void alterarPeloId(Hospital hospital, Integer id, Paciente pacienteAtualizado) {
-        for (Paciente paciente : hospital.getPacientes()) {
-            if (paciente.getId().equals(id)) {
-                this.setarAtributos(paciente, pacienteAtualizado);
-            }
+        Paciente paciente = buscarId(hospital.getPacientes(), id);
+        if (paciente == null){
+            throw new IdException("Id não encontrado!");
         }
+        this.setarAtributos(paciente, pacienteAtualizado);
     }
 
     @Override
     public void deletarPeloId(Hospital hospital, Integer id) {
-        hospital.getPacientes().removeIf(paciente -> paciente.getId().equals(id));
+        boolean removeu = hospital.getPacientes().removeIf(paciente -> paciente.getId().equals(id));
+        if (!removeu){
+            System.out.println("Não encontramos este id para remover!");
+        }
     }
 
     @Override

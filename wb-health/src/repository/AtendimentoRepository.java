@@ -39,7 +39,10 @@ public class AtendimentoRepository implements Cadastro<Atendimento> {
 
     @Override
     public void deletarPeloId(Hospital hospital, Integer id) {
-        hospital.getAtendimentos().removeIf(atendimento -> atendimento.getId().equals(id));
+        boolean removeu = hospital.getAtendimentos().removeIf(atendimento -> atendimento.getId().equals(id));
+        if (!removeu){
+            System.out.println("Não encontramos este id para remover!");
+        }
     }
 
     @Override
