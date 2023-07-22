@@ -2,6 +2,8 @@ package tests;
 
 import model.*;
 import util.Menu;
+import util.MenuMedico;
+import util.MenuPaciente;
 import util.TipoDeAtendimento;
 
 import java.util.ArrayList;
@@ -38,46 +40,59 @@ public class TesteClasses {
 
         System.out.println();
 
-        try {
-            Hospital hospital = new Hospital("cnpj", "WB Health", 15, 2, medicos, pacientes, atendimentos, funcionarios);
-            Scanner sc = new Scanner(System.in);
-            Integer opcao = -1;
+        Hospital hospital = new Hospital("cnpj", "WB Health", 15, 2, medicos, pacientes, atendimentos, funcionarios);
+        Scanner sc = new Scanner(System.in);
 
-            while (true) {
+
+        while (true) {
+            try {
+                Integer opcao = -1;
+
                 Menu.listarMenuGeral();
-                opcao = Integer.parseInt(sc.next());
-                sc.nextLine();
+                opcao = Integer.parseInt(sc.nextLine());
                 if (opcao == 0) {
+                    System.out.println("Obrigado por usar o WB Health, o seu serviço de saúde!");
                     return;
                 }
                 while (true) {
                     int selecao = -1;
                     Menu.listarSecao(opcao);
-                    selecao = Integer.parseInt(sc.next());
-                    sc.nextLine();
+                    selecao = Integer.parseInt(sc.nextLine());
                     if (selecao == 0) {
+
                         break;
                     }
                     if (opcao == 1) {
                         switch (selecao) {
-                            case 1 -> Menu.listarMedicos(hospital);
-                            case 2 -> Menu.inserirMedicos(sc, hospital);
-                            case 3 -> Menu.listarMedicoPeloID(hospital, sc);
-                            case 4 -> Menu.alterarMedicoPeloId(hospital, sc);
-                            case 5 -> Menu.deletarMedicoPeloId(hospital, sc);
+                            case 1 -> MenuMedico.listar(hospital);
+                            case 2 -> MenuMedico.inserir(sc, hospital);
+                            case 3 -> MenuMedico.listarPeloID(hospital, sc);
+                            case 4 -> MenuMedico.alterarPeloId(hospital, sc);
+                            case 5 -> MenuMedico.deletarPeloId(hospital, sc);
                             default -> {
-                                System.out.println("Selecione uma das opções!!");;
+                                System.out.println("Selecione uma das opções!!");
+                            }
+                        }
+                    }
+                    else if (opcao == 2) {
+                        switch (selecao) {
+                            case 1 -> MenuPaciente.listar(hospital);
+                            case 2 -> MenuPaciente.inserir(sc, hospital);
+                            case 3 -> MenuPaciente.listarPeloID(hospital, sc);
+                            case 4 -> MenuPaciente.alterarPeloId(hospital, sc);
+                            case 5 -> MenuPaciente.deletarPeloId(hospital, sc);
+                            default -> {
+                                System.out.println("Selecione uma das opções!!");
                             }
                         }
                     }
                 }
+            } catch (NumberFormatException e) {
+                System.err.println("Entrada Inválida! " + e.getMessage());
+            } catch (RuntimeException e) {
+                System.err.println("Ocorreu um erro! " + e.getMessage());
             }
-        } catch (NumberFormatException e){
-            System.err.println("Entrada Inválida! " + e.getMessage());
-        } catch (RuntimeException e) {
-            System.err.println("Ocorreu um erro! " + e.getMessage());
-        }finally {
-            System.out.println("Obrigado por usar o WB Health, o seu serviço de saúde!");
         }
     }
 }
+

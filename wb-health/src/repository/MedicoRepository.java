@@ -1,6 +1,5 @@
 package repository;
 
-import model.Atendimento;
 import model.Cadastro;
 import model.Hospital;
 import model.Medico;
