@@ -39,7 +39,7 @@ public class TesteClasses {
 
         Hospital hospital = new Hospital("cnpj", "WB Health", medicos, pacientes, atendimentos, funcionarios);
         Scanner sc = new Scanner(System.in);
-        
+
         while (true) {
             try {
                 Integer opcao = -1;
