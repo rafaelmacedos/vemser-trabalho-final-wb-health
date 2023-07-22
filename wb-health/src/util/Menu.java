@@ -13,8 +13,9 @@ public class Menu {
         System.out.println("---------- ESCOLHA UMA OPÇÃO ----------");
         System.out.println("1 - Seção de Médicos");
         System.out.println("2 - Seção de Paciente");
-        System.out.println("3 - Seção de Atendimento");
-        System.out.println("4 - Seção do Financeiro");
+        System.out.println("3 - Seção de Funcionário");
+        System.out.println("4 - Seção de Atendimento");
+        System.out.println("5 - Seção do Financeiro");
         System.out.println("0 - Sair");
     }
 
@@ -22,7 +23,8 @@ public class Menu {
         String secao = switch (opcao) {
             case 1 -> "médicos";
             case 2 -> "pacientes";
-            case 3 -> "atendimentos";
+            case 3 -> "funcionários";
+            case 4 -> "atendimentos";
             default -> throw new IllegalStateException("Valor inexperado: " + opcao);
         };
         System.out.println("\n---------- SEÇÃO DE " + secao.toUpperCase() + " ----------");

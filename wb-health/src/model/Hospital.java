@@ -29,6 +29,7 @@ public class Hospital {
         this.medicos = medicos;
         this.pacientes = pacientes;
         this.atendimentos = atendimentos;
+        this.funcionarios = funcionarios;
     }
 
     // Getters & Setters

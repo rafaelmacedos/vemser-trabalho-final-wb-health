@@ -1,10 +1,7 @@
 package tests;
 
 import model.*;
-import util.Menu;
-import util.MenuMedico;
-import util.MenuPaciente;
-import util.TipoDeAtendimento;
+import util.*;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -44,6 +41,7 @@ public class TesteClasses {
         Scanner sc = new Scanner(System.in);
 
 
+
         while (true) {
             try {
                 Integer opcao = -1;
@@ -81,6 +79,18 @@ public class TesteClasses {
                             case 3 -> MenuPaciente.listarPeloID(hospital, sc);
                             case 4 -> MenuPaciente.alterarPeloId(hospital, sc);
                             case 5 -> MenuPaciente.deletarPeloId(hospital, sc);
+                            default -> {
+                                System.out.println("Selecione uma das opções!!");
+                            }
+                        }
+                    }
+                    else if (opcao == 3) {
+                        switch (selecao) {
+                            case 1 -> MenuFuncionario.listar(hospital);
+                            case 2 -> MenuFuncionario.inserir(sc, hospital);
+                            case 3 -> MenuFuncionario.listarPeloID(hospital, sc);
+                            case 4 -> MenuFuncionario.alterarPeloId(hospital, sc);
+                            case 5 -> MenuFuncionario.deletarPeloId(hospital, sc);
                             default -> {
                                 System.out.println("Selecione uma das opções!!");
                             }
