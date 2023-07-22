@@ -95,6 +95,17 @@ public class TesteClasses {
                                 System.out.println("Selecione uma das opções!!");
                             }
                         }
+                    }else if (opcao == 4) {
+                        switch (selecao) {
+                            case 1 -> MenuAtendimento.listar(hospital);
+                            case 2 -> MenuAtendimento.inserir(sc, hospital);
+                            case 3 -> MenuAtendimento.listarPeloID(hospital, sc);
+                            case 4 -> MenuAtendimento.alterarPeloId(hospital, sc);
+                            case 5 -> MenuAtendimento.deletarPeloId(hospital, sc);
+                            default -> {
+                                System.out.println("Selecione uma das opções!!");
+                            }
+                        }
                     }
                 }
             } catch (NumberFormatException e) {

@@ -5,6 +5,7 @@ import model.Medico;
 import repository.MedicoRepository;
 
 public class MedicoResource {
+
     private MedicoRepository medicoRepository = new MedicoRepository();
 
     public void inserir(Hospital hospital, Medico medico) {
@@ -25,5 +26,9 @@ public class MedicoResource {
 
     public void deletarPeloId(Hospital hospital, Integer id){
         medicoRepository.deletarPeloId(hospital, id);
+    }
+
+    public Medico buscarId(Hospital hospital, Integer id){
+        return medicoRepository.buscarId(hospital.getMedicos(), id);
     }
 }

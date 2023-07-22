@@ -2,6 +2,7 @@ package repository;
 
 import model.Cadastro;
 import model.Hospital;
+import model.Medico;
 import model.Paciente;
 
 import java.util.List;
@@ -49,7 +50,12 @@ public class PacienteRepository implements Cadastro<Paciente> {
     }
 
     @Override
-    public Paciente buscarId(List<Paciente> endidade, Integer id) {
+    public Paciente buscarId(List<Paciente> pacientes, Integer id) {
+        for (Paciente paciente : pacientes) {
+            if (paciente.getId().equals(id)) {
+                return paciente;
+            }
+        }
         return null;
     }
 }

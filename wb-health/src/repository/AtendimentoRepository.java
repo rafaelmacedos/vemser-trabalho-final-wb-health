@@ -47,8 +47,6 @@ public class AtendimentoRepository implements Cadastro<Atendimento> {
         atendimento.setData(atendimentoAtualizado.getData());
         atendimento.setTipoDeAtendimento(atendimentoAtualizado.getTipoDeAtendimento());
         atendimento.setLaudo(atendimentoAtualizado.getLaudo());
-        atendimento.setMedico(atendimentoAtualizado.getMedico());
-        atendimento.setPaciente(atendimentoAtualizado.getPaciente());
         atendimento.calcularValorDoAtendimento(atendimentoAtualizado.getTipoDeAtendimento());
     }
 

@@ -1,6 +1,7 @@
 package resources;
 
 import model.Hospital;
+import model.Medico;
 import model.Paciente;
 import repository.PacienteRepository;
 
@@ -25,5 +26,9 @@ public class PacienteResource {
 
     public void deletarPeloId(Hospital hospital, Integer id){
         pacienteRepository.deletarPeloId(hospital, id);
+    }
+
+    public Paciente buscarId(Hospital hospital, Integer id){
+        return pacienteRepository.buscarId(hospital.getPacientes(), id);
     }
 }
