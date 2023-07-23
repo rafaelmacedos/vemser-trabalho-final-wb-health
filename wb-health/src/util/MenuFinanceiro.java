@@ -24,12 +24,11 @@ public class MenuFinanceiro {
             ganhoAtendimentos += atendimento.getValor();
         }
 
-        System.out.println("\n---------- Seção Financeira ----------");
-        System.out.println("Folha Mensal: R$" + String.format("%.2f", folhaMensal));
-        System.out.println("Folha Anual: R$" + String.format("%.2f", folhaAnual));
-        System.out.println("Ganhos Totais: R$" + String.format("%.2f", ganhoAtendimentos));
-
-        System.out.println("0 - Voltar");
+        System.out.println(CoresMenu.VERDE_BOLD +"\n---------- SEÇÃO FINANCEIRA ----------"
+        + "\nFolha Mensal: R$" + String.format("%.2f", folhaMensal)
+        + "\nFolha Anual: R$" + String.format("%.2f", folhaAnual)
+        + "\nGanhos Totais: R$" + String.format("%.2f", ganhoAtendimentos)
+        + "\n\n0 - Voltar" + CoresMenu.RESET);
     }
 
 }

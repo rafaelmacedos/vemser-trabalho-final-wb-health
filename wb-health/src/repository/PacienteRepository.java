@@ -41,7 +41,7 @@ public class PacienteRepository implements Cadastro<Paciente> {
     public void deletarPeloId(Hospital hospital, Integer id) {
         boolean removeu = hospital.getPacientes().removeIf(paciente -> paciente.getId().equals(id));
         if (!removeu){
-            System.out.println("Não encontramos este id para remover!");
+            throw new IdException("Id não encontrado!");
         }
     }
 

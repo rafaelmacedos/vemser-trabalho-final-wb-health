@@ -16,7 +16,7 @@ public class MenuFuncionario {
             System.out.println("\n---------- Lista de funcionários ----------");
             funcionarioResource.listarTodos(hospital);
         }catch (RuntimeException e){
-            System.out.println("Erro ao listar todos" + e.getMessage());
+            System.err.println("Erro ao listar todos" + e.getMessage());
         }
     }
 
@@ -36,8 +36,9 @@ public class MenuFuncionario {
             funcionario = new Funcionario(nome, cep, cpf, salario);
 
             funcionarioResource.inserir(hospital, funcionario);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (RuntimeException e){
-            System.out.println("Ocorreu ao inserir: " + e.getMessage());
+            System.err.println("Ocorreu um erro ao inserir: " + e.getMessage());
         }
     }
     public static void listarPeloID(Hospital hospital, Scanner sc) {
@@ -46,8 +47,12 @@ public class MenuFuncionario {
             System.out.print("ID do funcionário que deseja buscar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             funcionarioResource.listarPeloId(hospital, id);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
+        }
+        catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
@@ -67,8 +72,12 @@ public class MenuFuncionario {
 
             Funcionario funcionario = new Funcionario(nome, cep, cpf, salario);
             funcionarioResource.alterarPeloId(hospital, id, funcionario);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
+        }
+        catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
@@ -78,8 +87,12 @@ public class MenuFuncionario {
             System.out.print("ID do funcionário que deseja deletar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             funcionarioResource.deletarPeloId(hospital, id);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
+        }
+        catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 }

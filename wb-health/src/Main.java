@@ -23,6 +23,16 @@ public class Main {
         Hospital hospital = new Hospital("cnpj", "WB Health", medicos, pacientes, atendimentos, funcionarios);
         Scanner sc = new Scanner(System.in);
 
+        System.out.println(CoresMenu.CIANO_BOLD +  "\n" +
+                "██╗    ██╗██████╗     ██╗  ██╗███████╗ █████╗ ██╗  ████████╗██╗  ██╗\n" +
+                "██║    ██║██╔══██╗    ██║  ██║██╔════╝██╔══██╗██║  ╚══██╔══╝██║  ██║\n" +
+                "██║ █╗ ██║██████╔╝    ███████║█████╗  ███████║██║     ██║   ███████║\n" +
+                "██║███╗██║██╔══██╗    ██╔══██║██╔══╝  ██╔══██║██║     ██║   ██╔══██║\n" +
+                "╚███╔███╔╝██████╔╝    ██║  ██║███████╗██║  ██║███████╗██║   ██║  ██║\n" +
+                " ╚══╝╚══╝ ╚═════╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝   ╚═╝  ╚═╝\n" +
+                "                                                                    " + CoresMenu.RESET);
+        System.out.println(CoresMenu.CIANO_BOLD + "++++++++++++ Bem-Vindo ao Sistema de Gestão da WB Health ++++++++++++\n" + CoresMenu.RESET);
+
         while (true) {
             try {
                 Integer opcao = -1;
@@ -30,7 +40,7 @@ public class Main {
                 Menu.listarMenuGeral();
                 opcao = Integer.parseInt(sc.nextLine());
                 if (opcao == 0) {
-                    System.out.println("Obrigado por usar o WB Health, o seu serviço de saúde!");
+                    System.out.println(CoresMenu.CIANO_BOLD + "\n++++ Obrigado por usar o sistema da WB Health, o seu serviço de gestão em saúde! ++++" + CoresMenu.RESET);
                     return;
                 }
                 while (true) {
@@ -97,9 +107,7 @@ public class Main {
                     }
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Entrada Inválida! " + e.getMessage());
-            } catch (RuntimeException e) {
-                System.err.println("Ocorreu um erro! " + e.getMessage());
+                System.err.println("Entrada Inválida! ");
             }
         }
     }

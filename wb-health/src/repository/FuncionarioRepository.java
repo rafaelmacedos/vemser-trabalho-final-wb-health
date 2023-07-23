@@ -38,7 +38,7 @@ public class FuncionarioRepository implements Cadastro<Funcionario> {
     public void deletarPeloId(Hospital hospital, Integer id) {
         boolean removeu = hospital.getFuncionarios().removeIf(funcionario -> funcionario.getId().equals(id));
         if (!removeu) {
-            System.out.println("Não encontramos este id para remover!");
+            throw new IdException("Id não encontrado!");
         }
     }
 

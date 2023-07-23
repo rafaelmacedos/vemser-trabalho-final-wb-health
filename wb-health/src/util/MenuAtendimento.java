@@ -17,16 +17,16 @@ public class MenuAtendimento {
 
     private static AtendimentoResource atendimentoResource = new AtendimentoResource();
 
-    public static void listar(Hospital hospital){
+    public static void listar(Hospital hospital) {
         try {
             System.out.println("\n---------- Lista de atendimentos ----------");
             atendimentoResource.listarTodos(hospital);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("Erro ao listar todos" + e.getMessage());
         }
     }
 
-    public static void inserir(Scanner sc, Hospital hospital){
+    public static void inserir(Scanner sc, Hospital hospital) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
             System.out.print("Entre com o id do paciente: ");
@@ -42,7 +42,7 @@ public class MenuAtendimento {
 
             TipoDeAtendimento tipoDeAtendimento;
 
-            switch (codigoAtendimento){
+            switch (codigoAtendimento) {
                 case 1:
                     tipoDeAtendimento = TipoDeAtendimento.CONSULTA;
                     break;
@@ -64,32 +64,37 @@ public class MenuAtendimento {
             }
 
             Medico medico = medicoResource.buscarId(hospital, idMedico);
-            Paciente paciente = pacienteResource.buscarId(hospital,idPaciente);
+            Paciente paciente = pacienteResource.buscarId(hospital, idPaciente);
 
-            if(medico == null || paciente == null){
+            if (medico == null || paciente == null) {
                 System.out.println("Campo paciente ou médico inválido");
                 return;
-            }else{
+            } else {
                 Atendimento atendimento = new Atendimento(paciente, medico, data, laudo, tipoDeAtendimento);
                 atendimentoResource.inserir(hospital, atendimento);
+                System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
             }
 
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("Ocorreu ao inserir: " + e.getMessage());
         }
     }
+
     public static void listarPeloID(Hospital hospital, Scanner sc) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
             System.out.print("ID do atendimento que deseja buscar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             atendimentoResource.listarPeloId(hospital, id);
-        }catch (InputMismatchException e){
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
+        } catch (InputMismatchException e) {
             System.err.println("Input Inválido! ");
+        } catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
-    public static void alterarPeloId(Hospital hospital, Scanner sc){
+    public static void alterarPeloId(Hospital hospital, Scanner sc) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
             System.out.print("Entre com o id do atendimento: ");
@@ -103,7 +108,7 @@ public class MenuAtendimento {
 
             TipoDeAtendimento tipoDeAtendimento;
 
-            switch (codigoAtendimento){
+            switch (codigoAtendimento) {
                 case 1:
                     tipoDeAtendimento = TipoDeAtendimento.CONSULTA;
                     break;
@@ -126,9 +131,12 @@ public class MenuAtendimento {
 
             Atendimento atendimento = new Atendimento(null, null, data, laudo, tipoDeAtendimento);
             atendimentoResource.alterarPeloId(hospital, idAtendimento, atendimento);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
 
-        }catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.err.println("Input Inválido! ");
+        } catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
@@ -138,8 +146,11 @@ public class MenuAtendimento {
             System.out.print("ID do atendimento que deseja deletar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             atendimentoResource.deletarPeloId(hospital, id);
-        }catch (InputMismatchException e){
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
+        } catch (InputMismatchException e) {
             System.err.println("Input Inválido! ");
+        } catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 

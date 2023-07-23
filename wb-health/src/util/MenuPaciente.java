@@ -33,6 +33,7 @@ public class MenuPaciente {
             paciente = new Paciente(nome, cep, cpf);
 
             pacienteResource.inserir(hospital, paciente);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (RuntimeException e){
             System.out.println("Ocorreu ao inserir: " + e.getMessage());
         }
@@ -43,8 +44,12 @@ public class MenuPaciente {
             System.out.print("ID do paciente que deseja buscar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             pacienteResource.listarPeloId(hospital, id);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
+        }
+        catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
@@ -61,8 +66,12 @@ public class MenuPaciente {
             String cep = sc.nextLine();
 
             pacienteResource.alterarPeloId(hospital, id, new Paciente(nome, cep, cpf));
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
+        }
+        catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
@@ -72,8 +81,12 @@ public class MenuPaciente {
             System.out.print("ID do paciente que deseja deletar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             pacienteResource.deletarPeloId(hospital, id);
+            System.out.println(CoresMenu.VERDE_BOLD + "\nOperação realizada com sucesso!" + CoresMenu.RESET);
         }catch (InputMismatchException e){
             System.err.println("Input Inválido! ");
+        }
+        catch (RuntimeException e) {
+            System.err.println("Ocorreu um erro! " + e.getMessage());
         }
     }
 
