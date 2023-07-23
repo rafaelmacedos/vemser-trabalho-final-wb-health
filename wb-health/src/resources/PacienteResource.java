@@ -1,7 +1,6 @@
 package resources;
 
 import model.Hospital;
-import model.Medico;
 import model.Paciente;
 import repository.PacienteRepository;
 

@@ -1,9 +1,7 @@
 package util;
 
 import model.Hospital;
-import model.Medico;
 import model.Paciente;
-import resources.MedicoResource;
 import resources.PacienteResource;
 
 import java.util.InputMismatchException;

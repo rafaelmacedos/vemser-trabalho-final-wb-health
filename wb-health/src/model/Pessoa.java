@@ -1,7 +1,4 @@
 package model;
-
-import java.util.ArrayList;
-
 public abstract class Pessoa {
     private static Integer contadorId = 0;
     private Integer id;

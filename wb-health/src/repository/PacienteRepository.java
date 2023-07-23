@@ -2,7 +2,6 @@ package repository;
 
 import model.Cadastro;
 import model.Hospital;
-import model.Medico;
 import model.Paciente;
 import model.exceptions.IdException;
 

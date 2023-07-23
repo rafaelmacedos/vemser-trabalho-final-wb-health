@@ -1,11 +1,6 @@
 package util;
 
 import model.Hospital;
-import model.Medico;
-import resources.MedicoResource;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Menu {
 

@@ -43,7 +43,7 @@ public class MenuFuncionario {
     public static void listarPeloID(Hospital hospital, Scanner sc) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
-            System.out.print("ID do funcionario que deseja buscar: ");
+            System.out.print("ID do funcionário que deseja buscar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             funcionarioResource.listarPeloId(hospital, id);
         }catch (InputMismatchException e){
@@ -54,7 +54,7 @@ public class MenuFuncionario {
     public static void alterarPeloId(Hospital hospital, Scanner sc){
         try {
             System.out.println("\n---------- Entre com os dados ----------");
-            System.out.print("ID do funcionario que deseja alterar: ");
+            System.out.print("ID do funcionário que deseja alterar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             System.out.print("Novo nome do funcionário: ");
             String nome = sc.nextLine();
@@ -75,7 +75,7 @@ public class MenuFuncionario {
     public static void deletarPeloId(Hospital hospital, Scanner sc) {
         try {
             System.out.println("\n---------- Entre com os dados ----------");
-            System.out.print("ID do paciente que deseja deletar: ");
+            System.out.print("ID do funcionário que deseja deletar: ");
             Integer id = Integer.parseInt(sc.nextLine());
             funcionarioResource.deletarPeloId(hospital, id);
         }catch (InputMismatchException e){

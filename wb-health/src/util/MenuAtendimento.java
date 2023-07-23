@@ -1,6 +1,9 @@
 package util;
 
-import model.*;
+import model.Atendimento;
+import model.Hospital;
+import model.Medico;
+import model.Paciente;
 import resources.AtendimentoResource;
 import resources.MedicoResource;
 import resources.PacienteResource;
